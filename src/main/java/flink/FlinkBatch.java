@@ -9,9 +9,14 @@ import org.apache.flink.api.java.ExecutionEnvironment;
  * Created by DELL on 2017/11/22.
  */
 public class FlinkBatch {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         ExecutionEnvironment env = ExecutionEnvironment.createLocalEnvironment();
+//        readTextFile(env);
 
+    }
+
+
+    public static void readTextFile(ExecutionEnvironment env) {
         DataSet<String> data = env.readTextFile("D:\\data\\people.txt");
 
         data.filter(new FilterFunction<String>() {
@@ -20,7 +25,10 @@ public class FlinkBatch {
             }
         })
                 .writeAsText("D:\\flink");
-
-        JobExecutionResult res = env.execute();
+        try {
+            JobExecutionResult res = env.execute();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }

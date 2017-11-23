@@ -15,7 +15,7 @@ object HdfsUtilfs {
     }
 
     def readHdfs(): Unit ={
-        val path = "hdfs://bourne:8020/text/json.txt"
+        val path = "hdfs://bourne:8020/file/json.txt"
         val conf = new Configuration()
         val srcPath = new Path(path)
         val fs = null;

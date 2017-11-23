@@ -17,7 +17,7 @@ public class HdfsUtil {
     }
 
     public static void readHdfsFile(){
-        String filePath ="hdfs://bourne:8020/text/json.txt";
+        String filePath ="hdfs://bourne:8020/file/json.txt";
         Configuration conf = new Configuration();
         Path srcPath = new Path(filePath);
         FileSystem fs = null;
