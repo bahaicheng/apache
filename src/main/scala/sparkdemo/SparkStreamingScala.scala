@@ -1,13 +1,12 @@
-package sparks.streaming
-
+package sparkdemo
 
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.dstream.DStream
-import org.apache.spark.streaming.kafka010.KafkaUtils
-import org.apache.spark.streaming.{Seconds, StreamingContext}
-import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
 import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
+import org.apache.spark.streaming.kafka010.KafkaUtils
+import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
+import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 /**
  * Created by DELL on 2017/11/23.
@@ -35,7 +34,7 @@ object SparkStreamingScala {
 
         val wordCounts: DStream[(String, Int)] = words.map(x => (x, 1)).reduceByKey((a, b) => (a + b))
 
-        wordCounts.saveAsTextFiles("/file/"+System.currentTimeMillis())
+        wordCounts.print()
 
         ssc.start()
         ssc.awaitTermination()
