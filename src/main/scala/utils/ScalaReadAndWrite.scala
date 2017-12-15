@@ -7,7 +7,7 @@ import scala.io.Source
 
 object ScalaReadAndWrite {
   def main(args: Array[String]): Unit = {
-    //    read()
+    read()
     //    write()
   }
 
@@ -16,6 +16,8 @@ object ScalaReadAndWrite {
     for (line <- file.getLines()) {
       println(line)
     }
+    val url = Source.fromURL("http://www.baidu.com")
+    url.foreach(print _)
   }
 
   def write(): Unit = {
