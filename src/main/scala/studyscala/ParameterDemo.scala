@@ -1,4 +1,4 @@
-package sparkdemo
+package studyscala
 
 import entity.Parameter
 

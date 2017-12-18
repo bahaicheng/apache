@@ -35,7 +35,6 @@ object SparkStreamingScala {
         val wordCounts: DStream[(String, Int)] = words.map(x => (x, 1)).reduceByKey((a, b) => (a + b))
 
         wordCounts.print()
-
         ssc.start()
         ssc.awaitTermination()
     }
