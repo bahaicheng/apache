@@ -1,42 +1,41 @@
 package sparkdemo
 
 import kafka.serializer.StringDecoder
+import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.SparkSession
 import org.apache.spark.streaming.dstream.DStream
-import org.apache.spark.streaming.kafka.KafkaUtils
+import org.apache.spark.streaming.kafka010.KafkaUtils
 import org.apache.spark.streaming.{Seconds, StreamingContext}
+import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
+import org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe
 
 /**
- * Created by DELL on 2017/11/23.
- */
+  * Created by DELL on 2017/11/23.
+  */
 object SparkStreamingScala {
-    def main(args: Array[String]) {
+  def main(args: Array[String]) {
+    createDirectStream()
 
-//        val kafkaParams: Map[String, Object] = Map[String, Object](
-//            "bootstrap.servers" -> "bourne:9092",
-//            "key.deserializer" -> classOf[StringDeserializer],
-//            "value.deserializer" -> classOf[StringDeserializer],
-//            "group.id" -> "sparkstreamingtest",
-//            "auto.offset.reset" -> "latest",
-//            "enable.auto.commit" -> (false: java.lang.Boolean)
-//        )
+  }
 
-        val kafkaParams = Map[String, String]("metadata.broker.list" -> "bourne:2181")
-        val topicsSet = Array("kafkatopic").toSet
+  private def createDirectStream(): Unit = {
+    val kafkaParams: Map[String, Object] = Map[String, Object](
+      "bootstrap.servers" -> "bourne.9092",
+      "keydesrializer" -> classOf[StringDeserializer],
+      "value.deserializer" -> classOf[StringDeserializer],
+      "group.id" -> "sparkstreaming",
+      "auto.offset.reset" -> "latest",
+      "enable.auto.commit" -> (false: java.lang.Boolean))
 
-        val conf = new SparkConf().setAppName("sparkstreaming").setMaster("local[1]").set("spark.driver.host","localhost")
-        val ssc = new StreamingContext(conf, Seconds(2))
+    val topics: Array[String] = Array("kafkatopic", "topicA")
 
-        val messages = KafkaUtils.createDirectStream[String, String, StringDecoder, StringDecoder](
-                ssc, kafkaParams, topicsSet)
+    val conf = new SparkConf().setAppName("sparkstreaming").setMaster("local")
+    val ssc = new StreamingContext(conf, Seconds(2))
+    val stream = KafkaUtils.createDirectStream(ssc, PreferConsistent, Subscribe[String, String](topics, kafkaParams))
 
-        val map: DStream[(String)] = messages.map(msg => msg._2)
-        val words: DStream[String] = map.flatMap(line => line.split(" "))
-        val wordCounts: DStream[(String, Int)] = words.map(x => (x, 1)).reduceByKey((a, b) => (a + b))
+    val map = stream.map(msg => (msg.key(), msg.value()))
 
-        wordCounts.print()
-        ssc.start()
-        ssc.awaitTermination()
-    }
+    ssc.start()
+    ssc.awaitTermination()
+  }
 }
