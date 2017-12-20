@@ -26,6 +26,7 @@ object AccountCustomerIngest {
     val mapObj = map.map(tuple => {
       new AccountCustomer(tuple._2, tuple._1)
     })
+
     mapObj.foreach(obj => println(obj.accountNo))
   }
 }
