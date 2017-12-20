@@ -1,28 +1,30 @@
 package studyscala
 
 import java.io.{File, FileNotFoundException, FileReader, PrintWriter}
-import javafx.print.Printer
-
 import scala.io.Source
 import scala.util.matching.Regex
 
 trait SuperTrait
+
 case class caseClass1(name: String, age: Int) extends SuperTrait
+
 case class caseClass2(name: String) extends SuperTrait
 
-class Student(id:Int, name:String){
-  var age:Int = 0
-  def showDetails(){
-    println(id+" "+name+" "+age)
+class Student(id: Int, name: String) {
+  var age: Int = 0
+
+  def showDetails() {
+    println(id + " " + name + " " + age)
   }
-  def this(id:Int, name:String,age:Int){
-    this(id,name)       // Calling primary constructor, and it is first line
+
+  def this(id: Int, name: String, age: Int) {
+    this(id, name) // Calling primary constructor, and it is first line
     this.age = age
   }
 }
 
-class ThreadExample extends Thread{
-  override def run(){
+class ThreadExample extends Thread {
+  override def run() {
     println("Thread is running")
   }
 }
@@ -41,12 +43,24 @@ object ScalaDemo {
     //    readFromFile()
     //    caseClass()
 
-//    var s = new Student(1010,"Maxsu", 25);
-//    s.showDetails()
+    //    var s = new Student(1010,"Maxsu", 25);
+    //    s.showDetails()
 
-    var t = new ThreadExample()
-    t.start()
+    //    var t = new ThreadExample()
+    //    t.start()
+
+    //    implicitTest()
   }
+
+
+  def implicitTest(): Unit = {
+    val demo = implicitDemo(1, 2)
+    println("demo:" + demo)
+  }
+
+  implicit def implicitDemo(a: Int, b: Int): Int = a + b
+
+  implicit def implicitDemo(a: String): Unit = println(a)
 
   def caseClass(): Unit = {
     callCase(caseClass1("lee", 1))
@@ -133,6 +147,8 @@ object ScalaDemo {
     val nums: List[Int] = List(1, 2, 3, 4, 5)
     val emptyList: List[Nothing] = List()
     val emptyList1 = Nil
+
+    val newList = list:+"2"
 
     val fruit1 = "apples" :: ("oranges" :: ("pears" :: Nil))
     val fruit2 = "mangoes" :: ("banana" :: Nil)
