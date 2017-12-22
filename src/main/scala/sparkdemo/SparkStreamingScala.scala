@@ -1,10 +1,7 @@
 package sparkdemo
 
-import kafka.serializer.StringDecoder
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.execution.streaming.state
-import org.apache.spark.streaming.dstream.DStream
 import org.apache.spark.streaming.kafka010.KafkaUtils
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent
@@ -43,9 +40,7 @@ object SparkStreamingScala {
       val previousCount = state.getOrElse(0)
       Some(currentCount + previousCount)
     })
-
     mergeValue.print()
-
     ssc.start()
     ssc.awaitTermination()
   }
