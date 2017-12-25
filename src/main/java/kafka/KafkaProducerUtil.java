@@ -23,8 +23,8 @@ public class KafkaProducerUtil {
 
         Producer<String, String> producer = new KafkaProducer<>(props);
         String line = "hadoop hadoop word hive hive spark spark hue hue kafka kafka hbase hbase word a a b b";
-        for(int i = 0; i < 100; i++){
-            producer.send(new ProducerRecord<String, String>("kafkatopic", line));
+        for(int i = 0; i < 10; i++){
+            producer.send(new ProducerRecord<String, String>("kafkatopic", line+"==i:"+i));
         }
         producer.close();
     }
