@@ -7,8 +7,8 @@ import scala.io.Source
 
 object ScalaReadAndWrite {
   def main(args: Array[String]): Unit = {
-    read()
-    //    write()
+    //    read()
+    write()
   }
 
   def read(): Unit = {
@@ -22,7 +22,9 @@ object ScalaReadAndWrite {
 
   def write(): Unit = {
     val write = new PrintWriter(new File("D:/data/scalaWrite"))
-    write.print("hao")
+    for (a <- 1 to 100000000) {
+      write.print("hadoop hive hive kafka kafka hbase hue hue spark flume flume oozie oozie sqoop sqoop" + "\r\n")
+    }
     write.close()
   }
 }
