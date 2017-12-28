@@ -27,7 +27,18 @@ public class HdfsUtil {
             fs = FileSystem.get(uri, conf);
             InputStream in = null;
             in = fs.open(srcPath);
+            /**
+             * 第二个参数可以是输出流FSDataOutputStream out=null;
+             *  //打开输出流
+                    if(!(fs.exists(block))){
+                        out=fs.create(block);
+                     }else {
+                         out=fs.append(block);
+                     }
+             *  System.out可替换成out
+             */
             IOUtils.copyBytes(in, System.out, 4096, false);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
