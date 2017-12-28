@@ -53,7 +53,5 @@ object SparkTcp {
     list.foreach( o => {
       kafkaProducer.value.send("kafkatopic",o.SrcIP,o.toString)
     })
-
-
   }
 }

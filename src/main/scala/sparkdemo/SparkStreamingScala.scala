@@ -31,7 +31,8 @@ object SparkStreamingScala {
     val ssc = new StreamingContext(conf, Seconds(2))
     val stream = KafkaUtils.createDirectStream(ssc, PreferConsistent, Subscribe[String, String](topics, kafkaParams))
     ssc.checkpoint("")
-    val map = stream.map(msg => (msg.key(), 1))
+    val union = stream.union(stream)
+    val map = union.map(msg => (msg.key(), 1))
 
     val window = map.reduceByKeyAndWindow((a:Int,b:Int) => (a+b),Seconds(5),Seconds(5))
 
