@@ -17,7 +17,7 @@ public class KafkaConsumerUtil {
         props.put("bootstrap.servers", "bourne:9092");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        props.setProperty("group.id", "0");
+        props.setProperty("group.id", "3");
         props.setProperty("enable.auto.commit", "true");
         props.setProperty("auto.offset.reset", "earliest");
 
