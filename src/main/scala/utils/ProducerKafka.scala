@@ -18,8 +18,8 @@ object ProducerKafka {
 
     val producer = new KafkaProducer[String,String](props)
     var  line = "hadoop hadoop word hive hive spark spark hue hue kafka kafka hbase hbase word a a b b";
-    for(a <- 1 to 10){
-      producer.send(new ProducerRecord[String, String]("kafkatopic", a+"="+line));
+    for(a <- 1 to 2){
+      producer.send(new ProducerRecord[String, String]("kafkatopic" ,a+"="+line))
     }
     producer.close()
   }
