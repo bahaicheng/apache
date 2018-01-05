@@ -50,6 +50,32 @@ object ScalaDemo {
     //    t.start()
 
     //    implicitTest()
+//    vectordemo()
+    seqdemo()
+  }
+
+  def seqdemo(): Unit ={
+    var  seq = Seq((1,2,34),(-2,0,-3),("hello","world"))
+    seq = seq.:+((1,2,3,4,5,6),("HM"))
+
+    for (s <- seq){
+      println(s)
+    }
+  }
+
+  def vectordemo(): Unit ={
+    var vet : Vector[Int] = Vector(1,2,3,4,5,6,7)
+    println(vet)
+
+    vet  = vet.:+(8)
+    println(vet)
+
+    vet  = vet.drop(2)
+    println(vet)
+
+    for (v <- vet){
+        println("vetvet:"+v)
+    }
   }
 
 

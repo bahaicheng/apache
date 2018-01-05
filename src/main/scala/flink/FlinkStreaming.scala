@@ -18,18 +18,18 @@ class FlinkStreaming {
     env.enableCheckpointing(5000)
     env.getConfig.setGlobalJobParameters(params)
 
-    val kafkaConsumer = new FlinkKafkaConsumer09[String](params.getRequired("input-topic"),
-      new SimpleStringSchema,
-      params.getProperties)
+//    val kafkaConsumer = new FlinkKafkaConsumer09[String](params.getRequired("input-topic"),
+//      new SimpleStringSchema,
+//      params.getProperties)
+//
+//    val messageStream = env
+//      .addSource(kafkaConsumer)
+//      .map(in => prefix + in)
 
-    val messageStream = env
-      .addSource(kafkaConsumer)
-      .map(in => prefix + in)
-
-    val kafkaProducer = new FlinkKafkaConsumer09(
-      params.getRequired("output-topic"),
-      new SimpleStringSchema,
-      params.getProperties)
+//    val kafkaProducer = new FlinkKafkaConsumer09(
+//      params.getRequired("output-topic"),
+//      new SimpleStringSchema,
+//      params.getProperties)
 
     // write data into Kafka
     //     messageStream.addSink(kafkaProducer)
