@@ -146,6 +146,8 @@ object ScalaDemo {
     var map: Map[String, String] = Map("red" -> "#FF0000", "azure" -> "#F0FFFF")
     map.get("red")
     map.get("aa")
+    map("red")
+    
     println(show(map.get("red")))
     println(show(map.get("aa")))
 
