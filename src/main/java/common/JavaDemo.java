@@ -1,13 +1,12 @@
 package common;
 
-import org.apache.commons.collections.bag.SynchronizedSortedBag;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class JavaDemo{
     public static void main(String[] args) {
-        week();
+
     }
 
     public static void week(){
