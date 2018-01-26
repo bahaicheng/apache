@@ -19,9 +19,9 @@ import com.beust.jcommander.JCommander;
  * @author DELL
  *
  */
-public class Holiday {
+public class HolidayTbl {
 	
-	private static Logger logger = LogManager.getLogger(Holiday.class);
+	private static Logger logger = LogManager.getLogger(HolidayTbl.class);
 	
 	private static List<String> hlist;
 	private static List<String> wlist;
