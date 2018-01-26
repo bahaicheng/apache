@@ -2,6 +2,11 @@ package timetable;
 
 import com.beust.jcommander.Parameter;
 
+/**
+ *
+ * @author DELL
+ *
+ */
 public class InitArgs {
     /**
      * required设置为true则表示此选项为必须的，否则为可选

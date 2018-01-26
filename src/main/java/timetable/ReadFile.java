@@ -9,6 +9,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ *
+ * @author DELL
+ *
+ */
 public class ReadFile {
     String path;
 
@@ -16,6 +21,10 @@ public class ReadFile {
         this.path = pathName;
     }
 
+    /**
+     * 读取外部文件获取，节假日和补班日期
+     * @return
+     */
     public ExternalDataEntity readFileByChars() {
         ExternalDataEntity ede = new ExternalDataEntity();
         String line = "";

@@ -2,6 +2,11 @@ package timetable;
 
 import java.util.List;
 
+/**
+ *
+ * @author DELL
+ *
+ */
 public class ExternalDataEntity {
 
     private List<String> holidayList;
