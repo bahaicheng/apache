@@ -5,21 +5,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-/**
- *
- * @author DELL
- *
- */
-public class ReadFile {
-    String path = "D:\\utms.properties";
+public class ReadLine {
 
-    public ReadFile(String pathName) {
-        this.path = pathName;
+    public static void main(String[] args){
+
+        ReadLine rl = new ReadLine();
+        rl.readFileByChars();
     }
+
+    String path = "D:\\utms.properties";
 
     /**
      * 读取外部文件获取，节假日和补班日期
@@ -37,22 +33,25 @@ public class ReadFile {
                     line += (char) tempchar + "";
                 }
             }
+            System.out.println("======="+line);
             String[] spl = line.split("#");
             List<String> list = new ArrayList<>();
             for (int i = 0; i < spl.length; i++) {
                 if (i == 0) {
                     String holiday = spl[i].trim();
-                    String[] split = holiday.split("\n");
+                    String[] split = holiday.split(",");
                     list = new ArrayList<>();
                     for (String a : split) {
+                        System.out.println("===a:"+a);
                         list.add(a);
                     }
                     ede.setHlist(list);
                 } else if (i == 1) {
                     String workday = spl[i].trim();
-                    String[] split = workday.split("\n");
+                    String[] split = workday.split(",");
                     list = new ArrayList<>();
                     for (String a : split) {
+                        System.out.println("===b:"+a);
                         list.add(a);
                     }
                     ede.setWlist(list);
