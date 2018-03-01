@@ -4,20 +4,20 @@ package common;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class JavaDemo{
+public class JavaDemo {
     public static void main(String[] args) {
 
     }
 
-    public static void week(){
+    public static void week() {
         System.out.println("EnumTest.FRI 的 value = " + Week.FRI.getValue());
 
     }
 
     public static void array() {
         String[] arr = new String[3];
-        String[] arr1 ={"","",""};
-        String[] arr2 = new String[]{"",""};
+        String[] arr1 = {"", "", ""};
+        String[] arr2 = new String[]{"", ""};
     }
 
     public static void bytelenth() {
@@ -47,3 +47,4 @@ public class JavaDemo{
 //        set.add("bourne");
 //        Iterator<String> iterator = set.iterator();
     }
+}
