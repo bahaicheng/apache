@@ -19,25 +19,21 @@ import com.beust.jcommander.JCommander;
  */
 public class HolidayTbl {
 
-    private static Logger logger = LogManager.getLogger(HolidayTbl.class);
-
     private static List<String> hlist;
     private static List<String> wlist;
 
     public static void main(String[] args) {
-        logger.info("--------START--------");
         InitArgs argv = new InitArgs();
-        /*String[] arg = { "-conffilepath", "D:\\utms.properties", "-starttime", "20180101", "-endtime", "20181231",
+        String[] arg = { "-conffilepath", "D:\\utms.properties", "-starttime", "20180101", "-endtime", "20181231",
 				"-lastworkdate", "20171229", "-nextworkdate", "20190102", "-dburl", "jdbc:mysql://bourne:3306/holiday",
-				"-dbuser", "root", "-dbpwd", "root123", "-dbname", "mysql" };*/
-        JCommander.newBuilder().addObject(argv).build().parse(args);
+				"-dbuser", "root", "-dbpwd", "root123", "-dbname", "mysql" };
+        JCommander.newBuilder().addObject(argv).build().parse(arg);
 
         ReadFile rf = new ReadFile(argv.FILEPATH);
         ExternalDataEntity ede = rf.readFileByChars();
         hlist = ede.getHlist();
         wlist = ede.getWlist();
         holidayDate(argv);
-        logger.info("--------END--------");
     }
 
     /**
@@ -48,10 +44,8 @@ public class HolidayTbl {
     public static void holidayDate(InitArgs args) {
         String driver = "";
         if ((args.DBNAME.toLowerCase()).equals("mysql")) {
-            logger.info("--------Create_MysqlDatabase_Connection--------");
             driver = args.MYSQLDBDRIVER;
         } else if ((args.DBNAME.toLowerCase()).equals("oracle")) {
-            logger.info("--------Create_OracleDatabase_Connection--------");
             driver = args.ORACLEDBDRIVER;
         }
 
@@ -59,7 +53,7 @@ public class HolidayTbl {
             Class.forName(driver);
             Connection conn = DriverManager.getConnection(args.DBURL, args.DBUSER, args.DBPWD);
             if (!conn.isClosed())
-                logger.info("Succeeded connecting to the Database!");
+                System.out.println("Succeeded connecting to the Database!");
             Statement statement = conn.createStatement();
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
@@ -71,15 +65,6 @@ public class HolidayTbl {
 
             Date nextWorkDate = sdf.parse(args.NEXTWORKDATE);// 下一个工作日，默认1月2日，1日为元旦
             Date lastWorkDate = sdf.parse(args.LASTWORKDATE);// 上一个工作日
-
-            logger.info("--------StartTime:" + args.STARTTIME + "--------");
-            logger.info("--------EndTime:" + args.ENDTIME + "--------");
-
-            logger.info("--------LastWorkDate:" + args.LASTWORKDATE + "--------");
-            logger.info("--------NextWorkDate:" + args.NEXTWORKDATE + "--------");
-
-            logger.info("--------Holidays:" + hlist.toString() + "--------");
-            logger.info("--------WorkDays:" + wlist.toString() + "--------");
 
             if (!lists.isEmpty()) {
                 for (Date date : lists) {
@@ -119,7 +104,7 @@ public class HolidayTbl {
             }
             conn.close();
         } catch (Exception e) {
-            logger.error("Calculation_And_WriteToDatabase:" + e);
+            System.out.println("Calculation_And_WriteToDatabase:" + e);
         }
     }
 

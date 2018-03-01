@@ -22,6 +22,12 @@
     </repositories>
 
     <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>com.github.scopt</groupId>-->
+            <!--<artifactId>scopt_2.10</artifactId>-->
+            <!--<version>3.3.0</version>-->
+        <!--</dependency>-->
+
         <dependency>
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-exec</artifactId>
@@ -40,17 +46,17 @@
             <version>5.1.38</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j2.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.logging.log4j</groupId>-->
+            <!--<artifactId>log4j-core</artifactId>-->
+            <!--<version>${log4j2.version}</version>-->
+        <!--</dependency>-->
 
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${log4j2.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.logging.log4j</groupId>-->
+            <!--<artifactId>log4j-api</artifactId>-->
+            <!--<version>${log4j2.version}</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>junit</groupId>

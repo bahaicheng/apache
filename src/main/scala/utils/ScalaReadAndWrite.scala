@@ -21,7 +21,7 @@ object ScalaReadAndWrite {
   }
 
   def write(): Unit = {
-    val write = new PrintWriter(new File("D:/data/scalaWrite"))
+    val write = new PrintWriter(new File("D:/data/wordcount.txt"))
     for (a <- 1 to 100000000) {
       write.print("hadoop hive hive kafka kafka hbase hue hue spark flume flume oozie oozie sqoop sqoop" + "\r\n")
     }
