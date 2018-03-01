@@ -41,6 +41,11 @@ public class JavaDemo{
         String[] arr = {"aa", "bb", "cc"};
         List<String> strings = Arrays.asList(arr);
 
+<<<<<<< HEAD
+=======
+        
+        
+>>>>>>> 726a0511d77ce00fecb83e1945925f228c80b50e
         Set<String> set = new HashSet<>();
         set.add("bourne");
         Iterator<String> iterator = set.iterator();
