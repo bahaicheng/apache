@@ -41,9 +41,5 @@ public class JavaDemo{
         String[] arr = {"aa", "bb", "cc"};
         List<String> strings = Arrays.asList(arr);
 
-
-        Set<String> set = new HashSet<>();
-        set.add("bourne");
-        Iterator<String> iterator = set.iterator();
     }
 }
