@@ -17,6 +17,7 @@ public class JavaDemo {
     public static void array() {
         String[] arr = new String[3];
         String[] arr1 = {"", "", ""};
+        
         String[] arr2 = new String[]{"", ""};
     }
 
