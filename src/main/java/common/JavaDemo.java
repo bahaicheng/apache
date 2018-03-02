@@ -11,7 +11,7 @@ public class JavaDemo {
 
     public static void week() {
         System.out.println("EnumTest.FRI 的 value = " + Week.FRI.getValue());
-
+        
     }
 
     public static void array() {
